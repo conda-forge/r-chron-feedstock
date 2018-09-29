@@ -1,5 +1,4 @@
-{% set version = '2.3-50' %}
-
+{% set version = '2.3-53' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,33 +9,36 @@ package:
 source:
   fn: chron_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/chron_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/chron/chron_{{ version }}.tar.gz
-  sha256: a9efd0bb306bf2fd1969175e42d85e7fe1a85839ea8e45358e3647fd80a17af0
+    - {{ cran_mirror }}/src/contrib/chron_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/chron/chron_{{ version }}.tar.gz
+  sha256: 521814b46ba958eae28e29d8766aebd285da5e6fa16c5806603df3ae39f77309
 
 build:
   merge_build_host: True  # [win]
-  number: 1
+  number: 0
   skip: true  # [win32]
-
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
-    - posix                # [win]
-    - {{ compiler('c') }}        # [unix]
-    - {{ compiler('m2w64_c') }}  # [win]
+    - {{ compiler('c') }}        # [not win]
+    - {{native}}toolchain        # [win]
+    - {{posix}}filesystem        # [win]
+    - {{posix}}make
+    - {{posix}}sed               # [win]
+    - {{posix}}coreutils         # [win]
+    - {{posix}}zip               # [win]
   host:
     - r-base
-
   run:
     - r-base
+    - {{native}}gcc-libs         # [win]
 
 test:
   commands:
-    - $R -e "library('chron')"  # [not win]
+    - $R -e "library('chron')"           # [not win]
     - "\"%R%\" -e \"library('chron')\""  # [win]
 
 about:
@@ -44,8 +46,14 @@ about:
   license: GPL-2
   summary: Provides chronological objects which can handle dates and times.
   license_family: GPL2
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'  # [unix]
+  license_file: '{{ environ["PREFIX"] }}\R\share\licenses\GPL-2'  # [win]
 
 extra:
   recipe-maintainers:
     - johanneskoester
     - bgruening
+    - daler
+    - jdblischak
+    - cbrueffer
+    - dbast
