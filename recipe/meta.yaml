@@ -1,4 +1,4 @@
-{% set version = '2.3-53' %}
+{% set version = '2.3-54' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -7,23 +7,21 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: chron_{{ version }}.tar.gz
   url:
     - {{ cran_mirror }}/src/contrib/chron_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/chron/chron_{{ version }}.tar.gz
-  sha256: 521814b46ba958eae28e29d8766aebd285da5e6fa16c5806603df3ae39f77309
+  sha256: 0df3ac3e96e0469a8fd727ef65a1edfada90c088cd74f535ff5882ce716f876d
 
 build:
   merge_build_host: True  # [win]
-  number: 1001
-  skip: true  # [win32]
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
-    - {{ compiler('c') }}        # [not win]
+    - {{ compiler('c') }}              # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
     - {{posix}}filesystem        # [win]
     - {{posix}}make
@@ -46,8 +44,26 @@ about:
   license: GPL-2
   summary: Provides chronological objects which can handle dates and times.
   license_family: GPL2
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
+  license_file:
+    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
 
 extra:
   recipe-maintainers:
     - conda-forge/r
+
+# Package: chron
+# Version: 2.3-54
+# Title: Chronological Objects which can Handle Dates and Times
+# Description: Provides chronological objects which can handle dates and times.
+# Authors@R: c(person("David", "James", role = "aut", comment = "S original"), person("Kurt", "Hornik", role = c("aut", "trl", "cre"), email = "Kurt.Hornik@R-project.org", comment = c(ORCID = "0000-0003-4198-9911")), person("Gabor", "Grothendieck", role = "ctb", email = "ggrothendieck@gmail.com"), person("R Core Team", role = "ctb"))
+# Depends: R (>= 2.12.0)
+# Imports: graphics, stats
+# Suggests: scales, ggplot2
+# Enhances: zoo
+# License: GPL-2
+# NeedsCompilation: yes
+# Packaged: 2019-08-26 06:36:15 UTC; hornik
+# Author: David James [aut] (S original), Kurt Hornik [aut, trl, cre] (<https://orcid.org/0000-0003-4198-9911>), Gabor Grothendieck [ctb], R Core Team [ctb]
+# Maintainer: Kurt Hornik <Kurt.Hornik@R-project.org>
+# Repository: CRAN
+# Date/Publication: 2019-08-26 06:58:12 UTC
