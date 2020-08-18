@@ -41,7 +41,7 @@ test:
 
 about:
   home: https://CRAN.R-project.org/package=chron
-  license: GPL-2
+  license: GPL-2.0-only
   summary: Provides chronological objects which can handle dates and times.
   license_family: GPL2
   license_file:
