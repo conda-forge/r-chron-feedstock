@@ -1,4 +1,4 @@
-{% set version = "2.3-55" %}
+{% set version = "2.3-56" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/chron_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/chron/chron_{{ version }}.tar.gz
-  sha256: 0f731fb9e79818cd95b5fa843cc233616a5f8e5dd39a1ae8048f5a1fd8d1eb25
+  sha256: 863ecbb951a3da994761ea9062fa96d34e94e19fbc4122521ac179274dfa3f5d
 
 build:
-  merge_build_host: True  # [win]
-  number: 1
+  merge_build_host: true  # [win]
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
@@ -41,11 +41,11 @@ test:
 
 about:
   home: https://CRAN.R-project.org/package=chron
-  license: GPL-2
+  license: GPL-2.0-only
   summary: Provides chronological objects which can handle dates and times.
   license_family: GPL2
   license_file:
-    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2
 
 extra:
   recipe-maintainers:
