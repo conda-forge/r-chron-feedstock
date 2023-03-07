@@ -1,11 +1,22 @@
+About r-chron-feedstock
+=======================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-chron-feedstock/blob/main/LICENSE.txt)
+
 About r-chron
-=============
+-------------
 
 Home: https://CRAN.R-project.org/package=chron
 
 Package license: GPL-2.0-only
 
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-chron-feedstock/blob/main/LICENSE.txt)
+Summary: Provides chronological objects which can handle dates and times.
+About r-chron
+-------------
+
+Home: https://CRAN.R-project.org/package=chron
+
+Package license: GPL-2.0-only
 
 Summary: Provides chronological objects which can handle dates and times.
 
