@@ -1,4 +1,4 @@
-{% set version = "2.3-60" %}
+{% set version = "2.3-61" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/chron_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/chron/chron_{{ version }}.tar.gz
-  sha256: 0e0675cec55b6cea87fc5776846215e0445442554684120079e66013067491ee
+  sha256: a096957625a0438075b3486322ee07c753c7c4ba3efcd04a3ac92476d6c43b9b
 
 build:
   merge_build_host: true  # [win]
