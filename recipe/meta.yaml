@@ -1,4 +1,4 @@
-{% set version = "2.3-61" %}
+{% set version = "2.3-62" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,10 +9,10 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/chron_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/chron/chron_{{ version }}.tar.gz
-  sha256: a096957625a0438075b3486322ee07c753c7c4ba3efcd04a3ac92476d6c43b9b
+  sha256: 07ad2c77243dbbc9fa3bf4934466a0bc26bfe157172ffcd5a9a421621df1bea1
 
 build:
-  number: 2
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
